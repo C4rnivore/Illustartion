@@ -6,6 +6,8 @@ from config import settings
 from database import engine, SessionLocal
 from sqlalchemy.orm import Session
 
+from utils.Hash import HashPswd, CheckPswd
+
 import uvicorn
 import models
 import schemas
@@ -40,13 +42,31 @@ def create_user(user_data:schemas.UserRegScheme, db:db_dependency):
     if exists:
         return JSONResponse(status_code=status.HTTP_409_CONFLICT, content = {'message' : 'User already exists'})
     
-    user = models.Users(id=user_data.id, username = user_data.username, email = user_data.email, password = user_data.password)
+    hashed = HashPswd(user_data.password)
+    user = models.Users(id=user_data.id, username = user_data.username, email = user_data.email, password = hashed)
+    
     db.add(user)
     db.commit()
     db.refresh(user)
 
     return JSONResponse(status_code=status.HTTP_200_OK, content={'message' : 'User registred succesfully', 'uid':user_data.id})
 
+@app.post('/api/user/login')
+def login_user(user_data:schemas.UserLogScheme, db:db_dependency):
+    user = db.query(models.Users).filter(models.Users.email == user_data.email).first()
+    if not user:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content = {'message' : 'User not found'})
+    
+    valid = CheckPswd(user_data.password, user.password)
+    if not valid:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content = {'message' : 'Password is incorrect'})
+
+    return JSONResponse(status_code=status.HTTP_200_OK, content={'message' : 'User found', 'uid':user.id})
+
+@app.get('/api/user/{id}')
+def get_user_by_id(id:str, db:db_dependency):
+    user = db.query(models.Users).filter(models.Users.id == id).first()
+    return JSONResponse(status_code=status.HTTP_200_OK, content=user)
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host='localhost', port=8000, reload=True)

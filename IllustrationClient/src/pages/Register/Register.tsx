@@ -3,10 +3,9 @@ import './Register.css'
 
 
 function Register() {
-
     return ( 
-        
         <section className="register">
+            {/* <HomeAnchor/> */}
             <RegForm/>
         </section> 
     );
