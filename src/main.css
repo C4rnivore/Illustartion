@@ -1,0 +1,36 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: var(--font);
+    color:black
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+
+:root{
+    --green:#3DA35D;
+    --green-h: #378b52;
+    --font: "Space Grotesk", sans-serif;
+}
+
+.mw-1920{
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.green{
+    color:var(--green)
+}
+.normal{
+    font-weight: normal;
+}

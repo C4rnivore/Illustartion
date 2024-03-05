@@ -1,0 +1,46 @@
+header > *{
+    font-weight: lighter;
+}
+
+header{
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:20px 110px;
+}
+
+header > nav > ul{
+    display: flex;
+    gap:2em;
+}
+
+.header-title{
+    font-size: 36px;
+}
+.header-btns{
+    display: flex;
+    gap:20px;
+}
+.header-btn{
+    padding: 5px 15px;
+    background: none;
+    border-radius: 0;
+    border: 1px solid var(--green);
+}
+
+.h-b{
+    color: var(--green);
+}
+.h-b:hover{
+    background-color: var(--green);
+    color: #fff;
+}
+
+.h-b-t{
+    background-color: var(--green);
+    color: #fff;
+}
+.h-b-t:hover{
+    background-color: var(--green-h);
+}

@@ -1,0 +1,51 @@
+.hero{
+    position: relative;
+    padding-inline: 110px;
+    padding-top: 170px;
+    height: 100dvh;
+    max-height: calc(100dvh - 86px);
+    overflow: hidden;
+}
+
+.hero > h1{
+    font-size: 60px;
+    font-weight: lighter;
+    margin-bottom:30px ;
+}
+.hero > h2{
+    font-size: 36px;
+    font-weight: lighter;
+}
+.hero-btn{
+    font-size: 24px;
+    background-color: var(--green);
+    padding: 15px 30px;
+    color:#fff;
+    border: 5px solid #fff;
+}
+
+.hero-btn:hover{
+    background-color: var(--green-h);
+}
+.hero-btn-container{
+    z-index: 2;
+    position: absolute;
+    top: min(75%, 600px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    margin: 0 auto;
+}
+.hero-bg{
+    position: absolute;
+    left: 0;
+    top: min(80%, 635px);
+    width: 100%;
+}
+.hero-gr{
+    scale: 0.7;
+    z-index: 2;
+    position: absolute;
+    right: 110px;
+    top:130px
+}
