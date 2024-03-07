@@ -1,0 +1,17 @@
+.span-sep{
+    width: max-content;
+    margin: 0 auto;
+    opacity: .5;
+}
+.google-btn{
+    background: none;
+    border: 1px solid var(--green);
+    color: var(--green);
+    padding: 7px 0;
+}
+.google-btn:hover{
+    background: var(--green);
+    border: 1px solid var(--green);
+    color: #fff;
+    padding: 7px 0;
+}
