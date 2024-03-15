@@ -44,3 +44,8 @@ header > nav > ul{
 .h-b-t:hover{
     background-color: var(--green-h);
 }
+.header-profile-container{
+    display: flex;
+    align-items: center;
+    gap:20px
+}

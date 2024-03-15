@@ -4,14 +4,11 @@ import { LoginFields } from '../../utils/Types';
 import { useGoogleLogin } from '@react-oauth/google';
 import './LoginForm.css'
 import { LoginUser, GoogleLoginUser } from '../../utils/Api';
-import { useCookies } from 'react-cookie'
 import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     const {register, handleSubmit, setError, formState:{errors, isSubmitting}} = useForm<LoginFields>();
-    const [cookies, setCookie] = useCookies(['access_token'])
     const navigate = useNavigate();
-
     const onSubmit:SubmitHandler<LoginFields> = async (data) =>{
         let params:LoginFields = {
             email: data.email,
@@ -20,10 +17,13 @@ function LoginForm() {
 
         LoginUser(params)
             .then(res=>{
-                setCookie('access_token', res.access_token,{sameSite:true, secure:true, maxAge:604800})
+                console.log(res);
                 navigate('/')
             })
             .catch(err=>{
+                if(!err.response)
+                    return
+                
                 let res = err.response
                 setError(res.data.err_type,{
                     message: res.data.message
@@ -32,10 +32,12 @@ function LoginForm() {
     }
 
     const login = useGoogleLogin({
-        onSuccess: (codeResponse) => GoogleLoginUser(codeResponse.access_token).then(res=> [
-            setCookie('access_token', res.access_token,{sameSite:true, secure:true, maxAge:604800}),
+        onSuccess: (codeResponse) => GoogleLoginUser(codeResponse.access_token).then(res=> {
+            console.log(res);
             navigate('/')
-        ]),
+        }
+
+        ),
         onError: (error) => console.log('Login Failed:', error)
     });
 

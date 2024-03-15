@@ -1,0 +1,35 @@
+.pp-main-content{
+    transform: translateY(-30px);
+    background-color: #fff;
+    border-radius: 5px;
+    width: 85%;
+    height: 70%;
+    margin: 0 auto;
+    border: 1px solid var(--green);
+    padding-inline: 50px;
+}
+.pp-top-img{
+    
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: 5px solid #fff;
+}
+.pp-m-c-top{
+    display: flex;
+    transform: translateY(-30px);
+    align-items:center;
+    gap: 30px;
+}
+.pp-top-text{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.pp-top-id{
+    font-size: 10px;
+    color: rgb(172, 172, 172);
+}
+.pp-top-name{
+    font-size: 24px;
+}

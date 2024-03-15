@@ -5,6 +5,7 @@ class UserRegScheme(BaseModel):
     username:str
     email:str
     password:str
+    avatar: str | None
 
 class UserLogScheme(BaseModel):
     email:str

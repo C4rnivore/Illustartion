@@ -1,0 +1,20 @@
+.pp-section{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.pp-main{
+    position: relative;
+    width: 100%;
+    background-color: rgb(251, 255, 251);
+    
+}
+.pp-title-container{
+    padding: 50px 100px;
+    font-size: 36px;
+}
+.pp-bg{
+    height: 80px;
+    width: 100%;
+}

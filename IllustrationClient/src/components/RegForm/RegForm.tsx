@@ -4,19 +4,18 @@ import { NavLink } from 'react-router-dom';
 import { RegesitrationFields, UserDTO } from '../../utils/Types';
 import { RegisterUser } from '../../utils/Api';
 import {v4 as uuidv4} from 'uuid';
-import { useCookies } from 'react-cookie'
 import { useNavigate } from "react-router-dom";
 
 
 
 function RegForm() {
     const {register, handleSubmit,setError, formState:{errors, isSubmitting}, watch} = useForm<RegesitrationFields>();
-    const [cookies, setCookie] = useCookies(['access_token'])
     const navigate = useNavigate();
 
     const onSubmit:SubmitHandler<RegesitrationFields> = async (data) =>{
         let params:UserDTO = {
             id: uuidv4(),
+            avatar:'',
             username: data.username,
             email: data.email,
             password: data.password
@@ -24,7 +23,6 @@ function RegForm() {
 
         RegisterUser(params)
         .then(res=>{
-            setCookie('access_token', res.access_token,{sameSite:true, secure:true, maxAge:604800})
             navigate('/')
         })
         .catch(err=>{

@@ -22,4 +22,6 @@ class Settings:
     TOKEN_SECRET:str = os.getenv('JWT_SECRET')
     TOKEN_ALGORITHM:str = os.getenv('JWT_ALG')
 
+    USER_DEFAULT_PFP:str = os.getenv('USER_DEFAULT_PFP')
+
 settings = Settings()
