@@ -1,4 +1,5 @@
 import { useUserDataStore } from '../../store';
+import PPEdit from '../PPEdit/PPEdit';
 import './PPMain.css'
 
 function PPMain() {
@@ -14,7 +15,7 @@ function PPMain() {
                 </div>
             </div>
             <div className="pp-m-c-bottom">
-                
+                <PPEdit/>
             </div>
         </div> 
     );

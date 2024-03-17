@@ -22,12 +22,14 @@ export type UserData = {
     id:Nullable<string>,
     username:Nullable<string>,
     avatar:Nullable<string>,
+    email:Nullable<string>
 }
 
 export type UserDataActions = {
     updateId: (id: UserData['id']) => void,
     updateUsername: (username: UserData['username']) => void,
     updateAvatar: (avatar: UserData['avatar']) => void,
+    updateEmail: (email:UserData['email']) => void
 }
 
 type Nullable<T> = null | T

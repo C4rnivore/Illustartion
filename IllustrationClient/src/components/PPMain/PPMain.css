@@ -1,12 +1,17 @@
 .pp-main-content{
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 50px 50px 50px;
+    margin: 0 auto;
+
+    width: 85%;
+    height: 70%;
+
     transform: translateY(-30px);
     background-color: #fff;
     border-radius: 5px;
-    width: 85%;
-    height: 70%;
-    margin: 0 auto;
     border: 1px solid var(--green);
-    padding-inline: 50px;
 }
 .pp-top-img{
     
@@ -32,4 +37,7 @@
 }
 .pp-top-name{
     font-size: 24px;
+}
+.pp-m-c-bottom{
+    flex: 1;
 }

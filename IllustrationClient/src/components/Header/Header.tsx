@@ -10,22 +10,23 @@ export const HeaderTitle =() =>{
 }
 
 function Header() {
-    const {id, username, avatar, updateId, updateUsername, updateAvatar} = useUserDataStore((store) => store)
+    const {id, username, avatar, updateId, updateUsername, updateAvatar, updateEmail} = useUserDataStore((store) => store)
     
     const setUserData = (data:UserData) =>{
       updateId(data.id)
       updateUsername(data.username)
       updateAvatar(data.avatar)
+      updateEmail(data.email)
     } 
   
     useEffect(()=>{
-      GetUserData().
-      then((res:UserData)=>{
-        setUserData(res)
-      })
+        if(!id){
+            GetUserData().
+            then((res:UserData)=>{
+                setUserData(res)
+            })
+        }
     },[])
-
-  
 
     return ( 
         <header className="mw-1920">

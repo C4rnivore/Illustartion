@@ -1,5 +1,5 @@
 import datetime
-from fastapi import APIRouter, status
+from fastapi import APIRouter, Request, status
 from fastapi.responses import JSONResponse
 from src.configuration.config import Settings
 from src.database import models, schemas
@@ -13,7 +13,7 @@ from src.utils.CookieHandler import set_cookie_to_response
 router = APIRouter()
 
 @router.post('/api/user/create')
-def create_user(user_data:schemas.UserRegScheme, db:db_dependency):
+def create_user(user_data:schemas.UserRegScheme, req:Request, db:db_dependency):
     try:
         user = create_new_user(user_data, db)
         user_token = CreateToken({'uid':user.id}, settings.TOKEN_SECRET)

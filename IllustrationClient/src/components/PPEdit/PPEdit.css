@@ -1,0 +1,38 @@
+.pp-edit{
+    width: 35%;
+    height: 100%;
+    border: 1px solid var(--green);
+    border-radius: 5px;    
+    overflow: hidden;
+}
+.pp-edit-header{
+    width: 100%;
+    padding: 15px 30px;
+    background: var(--green);
+}
+
+.pp-edit-header span{
+    color: #fff;
+}
+
+.pp-edit-content{
+    display: flex;
+    flex-direction: column;
+    gap:25px;
+    padding: 15px 30px
+}
+
+.pp-edit-row{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pp-edit-row > input{
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid var(--green);
+}
+.pp-edit-id > input{
+    background-color: rgb(240, 240, 240) ;
+}
