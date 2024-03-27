@@ -4,32 +4,21 @@ import { useUserDataStore } from '../../store';
 import PPMenu from '../../components/PPMenu/PPMenu';
 import bgImage from '../../assets/main_bg_cropped.jpg'
 import PPMain from '../../components/PPMain/PPMain';
-import { useEffect, useState } from 'react';
-import { GetUserData } from '../../utils/Api';
-import { UserData } from '../../utils/Types';
+import {  useState } from 'react';
+import { useUserFetch } from '../../utils/Hooks';
 
 function PersonalPage() {
     let { userId } = useParams();
     const navigate = useNavigate()
     const [pending, setPending] = useState(false)
-    const {id, updateId, updateUsername, updateAvatar} = useUserDataStore((store) => store)
-    
-    const setUserData = (data:UserData) =>{
-        updateId(data.id)
-        updateUsername(data.username)
-        updateAvatar(data.avatar)
-    } 
+    const id = useUserDataStore((store) => store.id)
 
-    useEffect(()=>{
-        if(!id){
-            setPending(cur=>cur=true)
-            GetUserData().
-            then((res:UserData)=>{
-                setUserData(res)
-                setPending(cur=>cur=false)
-            })
-        }
-    },[])
+    useUserFetch({ 
+        onFetched: () => setPending(false), 
+        onFetching: () => setPending(true) 
+    })
+    
+    
 
     if (userId !== id && !pending){
         return (<>

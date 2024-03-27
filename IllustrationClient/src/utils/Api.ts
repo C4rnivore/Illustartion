@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { LoginFields, UserDTO } from './Types';
 import { api } from '../App';
+import { EditProfileFields } from '../components/PPEdit/PPEdit';
 axios.defaults.withCredentials = true
 
 export const RegisterUser = async (params:UserDTO) => {
@@ -70,10 +71,11 @@ export const GetUserData = async () =>{
     return response.data
 }
 
-export const GetUserDataById = async (id:string) =>{
+export const UpdateUserMainData = async (data:EditProfileFields) =>{
     const response = await axios({
-        method:'GET',
-        url:api + '/api/user/get/'+ id,
+        method:'PUT',
+        url:api + '/api/user/update/main',
+        data: data,
         responseType: 'json',
         headers: {
             'Access-Control-Allow-Origin' : '*',
@@ -84,3 +86,39 @@ export const GetUserDataById = async (id:string) =>{
 
     return response.data
 }
+
+export const UpdateUserDescription = async (uid:string, descr:string) =>{
+    const response = await axios({
+        method:'PUT',
+        url:api + '/api/user/update/description',
+        data: {
+            id:uid,
+            description:descr
+        },
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}
+
+// export const LoadUSerPfp = async (image:ImageData) =>{
+//     const response = await axios({
+//         method:'POST',
+//         url:api + '/api/user/update/pfp',
+//         data: {
+//             id:uid,
+//             description:descr
+//         },
+//         responseType: 'json',
+//         headers: {
+//             'Access-Control-Allow-Origin' : '*',
+//             'Access-Controll-Allow-Credentials': 'true',
+//             'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+//         }
+//     })
+// }

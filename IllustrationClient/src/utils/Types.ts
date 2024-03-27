@@ -19,17 +19,16 @@ export type UserDTO = {
 }
 
 export type UserData = {
-    id:Nullable<string>,
-    username:Nullable<string>,
-    avatar:Nullable<string>,
-    email:Nullable<string>
+    id?:Nullable<string>,
+    username?:Nullable<string>,
+    avatar?:Nullable<string>,
+    email?:Nullable<string>,
+    description?:Nullable<string>
 }
 
 export type UserDataActions = {
-    updateId: (id: UserData['id']) => void,
-    updateUsername: (username: UserData['username']) => void,
-    updateAvatar: (avatar: UserData['avatar']) => void,
-    updateEmail: (email:UserData['email']) => void
+    updateUserStore: (data:UserData) => void,
+    updateUserDescription: (data:UserData['description'])=> void
 }
 
 type Nullable<T> = null | T

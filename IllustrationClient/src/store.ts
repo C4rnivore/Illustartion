@@ -6,9 +6,20 @@ export const useUserDataStore = create<UserData & UserDataActions>((set)=>({
     username:null,
     avatar:null,
     email:null,
-    
-    updateId: (id:UserData['id']) => set(() => ({ id: id })),
-    updateUsername: (username:UserData['username']) => set(() => ({ username: username })),
-    updateAvatar: (avatar:UserData['avatar']) => set(() => ({ avatar: avatar })),
-    updateEmail:(email:UserData['email']) => set(() => ({ email: email })),
+    description:null,
+
+    updateUserDescription: (data:UserData['description']) => set(() => ({
+        description: data
+       })),
+       
+    updateUserStore: (data:UserData) => {
+        set(() => ({
+            id: data.id,
+            username: data.username ,
+            avatar: data.avatar,
+            email: data.email,
+        }))
+    }
+
+   
 }))

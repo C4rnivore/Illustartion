@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
+    
 
 class Settings:
     PROJECT_NAME:str = "Illustartion"
@@ -22,6 +23,8 @@ class Settings:
     TOKEN_SECRET:str = os.getenv('JWT_SECRET')
     TOKEN_ALGORITHM:str = os.getenv('JWT_ALG')
 
-    USER_DEFAULT_PFP:str = os.getenv('USER_DEFAULT_PFP')
+    IMAGE_HOST_API = 'https://api.imgbb.com/1/upload'
+    IMAGE_HOST_KEY = os.getenv('IMAGEBB_API_KEY')
+
 
 settings = Settings()

@@ -1,32 +1,15 @@
 import { NavLink } from "react-router-dom";
 import './Header.css'
 import { useUserDataStore } from "../../store";
-import { useEffect } from "react";
-import { UserData } from "../../utils/Types";
-import { GetUserData } from "../../utils/Api";
+import { useUserFetch } from "../../utils/Hooks";
 
 export const HeaderTitle =() =>{
     return <NavLink to='/' className={"header-title"}><span className="green">I</span>llustartion</NavLink>
 }
 
 function Header() {
-    const {id, username, avatar, updateId, updateUsername, updateAvatar, updateEmail} = useUserDataStore((store) => store)
-    
-    const setUserData = (data:UserData) =>{
-      updateId(data.id)
-      updateUsername(data.username)
-      updateAvatar(data.avatar)
-      updateEmail(data.email)
-    } 
-  
-    useEffect(()=>{
-        if(!id){
-            GetUserData().
-            then((res:UserData)=>{
-                setUserData(res)
-            })
-        }
-    },[])
+    const {id, username, avatar} = useUserDataStore((store) => store)
+    useUserFetch()
 
     return ( 
         <header className="mw-1920">
@@ -61,8 +44,6 @@ function Header() {
                     </NavLink>
                 )
             }
-
-            
         </header> 
     );
 }

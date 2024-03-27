@@ -1,0 +1,36 @@
+.pp-descr{
+    width: 60%;
+    height: 100%;
+    border: 1px solid var(--green);
+    border-radius: 5px;    
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.pp-descr-header{
+    width: 100%;
+    padding: 15px 30px;
+    background: var(--green);
+}
+
+.pp-descr-header span{
+    color: #fff;
+}
+
+#descr{
+    padding: 20px;
+    width: 100%;
+    height: 70%;
+    resize: none;
+    border: none;
+    border-bottom: 1px solid var(--green);
+}
+.form-submit-btn-disabled{
+    background-color: var(--green-h);
+}
+.input-descr-area{
+    flex: 1;
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+}

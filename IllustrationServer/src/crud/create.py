@@ -1,3 +1,4 @@
+from fastapi import Request
 from src.configuration.config import settings
 from src.utils.Hash import HashPswd
 from src.database import schemas
@@ -13,11 +14,11 @@ def create_new_user(user_data:schemas.UserRegScheme, db:db_dependency) -> models
           raise ValueError()
 
      if user_data.avatar == '':
-          avatar = settings.USER_DEFAULT_PFP
+          avatar = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg?20200418092106'
      else:
           avatar = user_data.avatar
 
-     user = models.Users(id=user_data.id, avatar=avatar, username = user_data.username, email = user_data.email, password = HashPswd(user_data.password))
+     user = models.Users(id=user_data.id, avatar=avatar, username = user_data.username, email = user_data.email, password = HashPswd(user_data.password), description = '')
      db.add(user)
      db.commit()
      db.refresh(user)

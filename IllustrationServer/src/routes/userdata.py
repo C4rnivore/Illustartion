@@ -16,15 +16,3 @@ def get_user_data( req:Request, db:db_dependency):
         return JSONResponse(status_code=status.HTTP_200_OK, content=data)
     except ValueError:
          return Response(status_code=status.HTTP_404_NOT_FOUND)
-    
-@router.get('/api/user/get/{id}')
-def get_user_data_by_id( req:Request, id:str, db:db_dependency):
-    access_token = req.cookies.get('access_token')
-    if not access_token:
-         return JSONResponse(status_code=status.HTTP_200_OK, content={'No':'Cookie'})
-    
-    try:
-        data = get_user_data_with_id(id,db)
-        return JSONResponse(status_code=status.HTTP_200_OK, content=data)
-    except ValueError:
-         return Response(status_code=status.HTTP_404_NOT_FOUND)

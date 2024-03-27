@@ -21,7 +21,8 @@ def get_user_data_with_token(access_token:str, db:db_dependency) -> str | ValueE
         'id':user.id,
         'avatar':user.avatar,
         'username':user.username,
-        'email':user.email
+        'email':user.email,
+        'description':user.description
     }
 
 def get_user_data_with_id(id:str, db:db_dependency) -> str | ValueError:
@@ -32,6 +33,7 @@ def get_user_data_with_id(id:str, db:db_dependency) -> str | ValueError:
         'id':user.id,
         'avatar':user.avatar,
         'username':user.username,
-        'email':user.email
+        'email':user.email,
+        'description':user.description
     }
 
