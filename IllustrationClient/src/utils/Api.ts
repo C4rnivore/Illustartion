@@ -106,19 +106,18 @@ export const UpdateUserDescription = async (uid:string, descr:string) =>{
     return response.data
 }
 
-// export const LoadUSerPfp = async (image:ImageData) =>{
-//     const response = await axios({
-//         method:'POST',
-//         url:api + '/api/user/update/pfp',
-//         data: {
-//             id:uid,
-//             description:descr
-//         },
-//         responseType: 'json',
-//         headers: {
-//             'Access-Control-Allow-Origin' : '*',
-//             'Access-Controll-Allow-Credentials': 'true',
-//             'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-//         }
-//     })
-// }
+export const LoadUserPfp = async (formData:FormData) =>{
+    const response = await axios({
+        method:'POST',
+        url:api + '/api/user/update/avatar',
+        data: formData,
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}

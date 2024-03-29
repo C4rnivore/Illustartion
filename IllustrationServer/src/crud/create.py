@@ -24,3 +24,21 @@ def create_new_user(user_data:schemas.UserRegScheme, db:db_dependency) -> models
      db.refresh(user)
 
      return user
+
+def create_new_image(image_data:dict, db:db_dependency) -> models.Images | ValueError:
+     exists = db.query(models.Images).filter(models.Images.id == image_data['id']).first()
+
+     if exists:
+          raise ValueError()
+     
+     image = models.Images(   id = image_data['id'],
+                              author_id = image_data['author_id'],
+                              title = image_data['title'],
+                              likes = image_data['likes'],
+                              link = image_data['link'],
+                              deleteLink = image_data['deleteLink'])
+     db.add(image)
+     db.commit()
+     db.refresh(image)
+     
+     return image

@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Cookie, Request, Response, status
 from fastapi.responses import JSONResponse
-from src.crud.read import get_user_data_with_id, get_user_data_with_token
+from src.crud.read import get_user_data_with_token
 from ..main import db_dependency
 router = APIRouter()
 

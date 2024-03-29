@@ -14,7 +14,6 @@ export type EditProfileFields={
 function PPEdit() {
     const {id, username, email, avatar, updateUserStore} = useUserDataStore((store) => store)
     const {register, handleSubmit, formState:{errors, isSubmitting}} = useForm<EditProfileFields>();
-
     
     const onSubmit:SubmitHandler<EditProfileFields> = async (data) =>{
         if (!id) return
@@ -41,15 +40,13 @@ function PPEdit() {
             }),
             {
                 loading: 'Saving...',
-                success: <b>Data have been succesfuly updated</b>,
-                error: <b>Something goes wrong</b>,
+                success: <span>Data have been succesfuly updated</span>,
+                error: <span>Something goes wrong</span>,
             }
         )
-    
     }
 
     useEffect(()=>{
-        console.log(1);
     },[username,email])
 
     return ( 

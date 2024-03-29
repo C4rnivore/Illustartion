@@ -36,7 +36,7 @@ function PersonalPage() {
                 <PPMenu/>
                 <div className="pp-main">
                     <div className="pp-title-container">
-                        <span className='pp-title'>Page Name</span>
+                        <span className='pp-title'>Profile</span>
                     </div>
                     <img className='pp-bg' src={bgImage} alt="" />
                     <PPMain/>

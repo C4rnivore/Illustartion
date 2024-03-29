@@ -10,7 +10,7 @@ export const useUserDataStore = create<UserData & UserDataActions>((set)=>({
 
     updateUserDescription: (data:UserData['description']) => set(() => ({
         description: data
-       })),
+    })),
        
     updateUserStore: (data:UserData) => {
         set(() => ({
@@ -19,7 +19,10 @@ export const useUserDataStore = create<UserData & UserDataActions>((set)=>({
             avatar: data.avatar,
             email: data.email,
         }))
-    }
+    },
+    updateUserAvatar: (data:UserData['avatar']) => set(() => ({
+        avatar: data
+    })),
 
    
 }))

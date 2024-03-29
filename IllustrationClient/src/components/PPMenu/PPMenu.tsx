@@ -11,13 +11,13 @@ function PPMenu() {
             <HeaderTitle/>
             <ul>
                 <li>
-                    <NavLink to={'/lk/'+ id}>profile</NavLink>
+                  <NavLink className={({ isActive}) => isActive ? "green" : ""}  to={'/lk/'+ id}>profile</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/lk/'+ id}>illustrations</NavLink>
+                    <NavLink className={({ isActive}) => isActive ? "green" : ""} to={'/illustrations/'+ id}>illustrations</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/lk/'+ id}>statistics</NavLink>
+                    <NavLink className={({ isActive}) => isActive ? "green" : ""} to={'/stat/'+ id}>statistics</NavLink>
                 </li>
             </ul>
             <button className="pp-back" onClick={()=>navigate('/')}>back</button>

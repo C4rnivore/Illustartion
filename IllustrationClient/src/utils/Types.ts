@@ -29,6 +29,7 @@ export type UserData = {
 export type UserDataActions = {
     updateUserStore: (data:UserData) => void,
     updateUserDescription: (data:UserData['description'])=> void
+    updateUserAvatar: (data:UserData['avatar'])=> void
 }
 
 type Nullable<T> = null | T

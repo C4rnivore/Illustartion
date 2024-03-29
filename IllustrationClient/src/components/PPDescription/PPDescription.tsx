@@ -24,8 +24,8 @@ function PPDescription() {
             }),
             {
                 loading: 'Saving...',
-                success: <b>Data have been succesfuly updated</b>,
-                error: <b>Something goes wrong</b>,
+                success: <span>Data have been succesfuly updated</span>,
+                error: <span>Something goes wrong</span>,
             }
         )
     }

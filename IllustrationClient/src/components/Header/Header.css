@@ -49,3 +49,7 @@ header > nav > ul{
     align-items: center;
     gap:20px
 }
+.header-profile-container > img{
+    object-fit: cover;
+    border-radius: 50%;
+}

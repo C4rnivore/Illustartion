@@ -20,6 +20,9 @@
     border-radius: 15px;
     border: 5px solid #fff;
 }
+.pp-top-img:hover{
+    cursor: pointer;
+}
 .pp-m-c-top{
     display: flex;
     transform: translateY(-30px);
