@@ -1,4 +1,4 @@
-from sqlalchemy import  Column, String, Integer
+from sqlalchemy import  ARRAY, Column, String, Integer
 from src.database.db import Base
 
 class Users(Base):
@@ -11,8 +11,7 @@ class Users(Base):
     password = Column(String)
     description = Column(String)
     avatar = Column(String)
-
-    avatar = Column(String)
+    images = Column(ARRAY(String))
 
 class Images(Base):
     __tablename__ = 'Изображения'

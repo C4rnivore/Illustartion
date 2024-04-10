@@ -2,9 +2,11 @@ import { HeaderTitle } from '../Header/Header';
 import { useUserDataStore } from '../../store';
 import './PPMenu.css'
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useUserFetch } from '../../utils/Hooks';
 
 function PPMenu() {
-    const id= useUserDataStore((store) => store.id)
+    const id = useUserDataStore((store) => store.id)
+    useUserFetch()
     const navigate = useNavigate()
     return ( 
         <nav className='pp-nav'>

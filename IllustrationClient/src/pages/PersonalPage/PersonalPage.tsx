@@ -18,8 +18,6 @@ function PersonalPage() {
         onFetching: () => setPending(true) 
     })
     
-    
-
     if (userId !== id && !pending){
         return (<>
             <h1>'Access to the requested page is denied'</h1>

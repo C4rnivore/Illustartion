@@ -121,3 +121,19 @@ export const LoadUserPfp = async (formData:FormData) =>{
 
     return response.data
 }
+
+export const LoadUserImage = async (formData:FormData) =>{
+    const response = await axios({
+        method:'POST',
+        url:api + '/api/user/load/image',
+        data: formData,
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}

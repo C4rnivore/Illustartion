@@ -5,7 +5,7 @@ from typing import Annotated
 from fastapi.responses import JSONResponse
 from sqlalchemy import update
 from src.crud.create import create_new_image
-from src.crud.update import update_user_avatar
+from src.crud.update import update_user_avatar, load_user_image
 from src.utils.Token import DecodeToken
 from src.configuration.config import settings
 from src.database import models, schemas
@@ -84,6 +84,45 @@ async def update_user_pfp(req:Request, db:db_dependency,  image:UploadFile = Fil
             'message':response['message']
         })
    
+
+@router.post('/api/user/load/image',)
+async def update_user_pfp(req:Request, db:db_dependency,  image:UploadFile = File(...)):
+    try:
+        imageb64 = base64.b64encode(image.file.read())
+    except Exception:
+        return {"message": "There was an error uploading the file"}
+
+    try:
+        access_token = req.cookies.get('access_token')
+        uid = DecodeToken(access_token, settings.TOKEN_SECRET)['uid']
+    except Exception:
+        return {"message": "Your token has expired. Please login again"}
+    
+    imagedata = load_image_to_host(imageb64)
+    if(imagedata == None):
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content= {'message':'Something went wrong'})
+    
+    image_data = {
+        'id': imagedata['data']['id'],
+        'author_id' : uid,
+        'title' : imagedata['data']['title'],
+        'likes' : 0,
+        'link' : imagedata['data']['url'],
+        'deleteLink' : imagedata['data']['delete_url'],
+    }
+
+    create_new_image(image_data, db)
+    
+    try:
+        response = load_user_image(image_data['id'], uid, db)
+        return JSONResponse(status_code=status.HTTP_200_OK, content={
+            'message':response['message'],
+            'avatarLink':image_data['link']
+        })
+    except:
+        return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={
+            'message':response['message']
+        })
 
 
 def load_image_to_host(imageb64):
