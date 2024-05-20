@@ -29,7 +29,7 @@ def create_new_image(image_data:dict, db:db_dependency) -> models.Images | Value
      exists = db.query(models.Images).filter(models.Images.id == image_data['id']).first()
 
      if exists:
-          raise ValueError()
+          return exists
      
      image = models.Images(   id = image_data['id'],
                               author_id = image_data['author_id'],

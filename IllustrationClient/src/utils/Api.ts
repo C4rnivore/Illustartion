@@ -137,3 +137,78 @@ export const LoadUserImage = async (formData:FormData) =>{
 
     return response.data
 }
+
+export const GetImagesForUser = async () =>{
+    const response = await axios({
+        method:'GET',
+        url:api + '/api/images',
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}
+
+export const DeleteImageById = async (imageId:string) =>{
+    const response = await axios({
+        method:'DELETE',
+        url:api + '/api/images/delete/'+ imageId,
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}
+
+export const GetImagesForMain = async () =>{
+    const response = await axios({
+        method:'GET',
+        url:api + '/api/images/get/',
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}
+export const GetImagesDataForMain = async (imageId:string, authorId:string) =>{
+
+    const response = await axios({
+        method:'GET',
+        url:api + '/api/images/data/get/' + imageId + '/'+ authorId,
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}
+
+export const Logout = async ()=>{
+    const response = await axios({
+        method:'GET',
+        url:api + '/api/user/logout',
+        responseType: 'json',
+        headers: {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Controll-Allow-Credentials': 'true',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
+
+    return response.data
+}

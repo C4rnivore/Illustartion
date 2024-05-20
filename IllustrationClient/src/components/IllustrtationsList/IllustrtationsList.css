@@ -1,0 +1,29 @@
+.il-list{
+    width: max(50% , 500px);
+    height: 500px;
+    background-color: white;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+    margin: 100px 100px 0 0;
+
+    display: flex;
+    flex-direction: column;
+}
+.il-list-header{
+    width: 100%;
+    padding: 15px 30px;
+    background: var(--green);
+    border-radius: 8px 8px 0 0;
+}
+.il-list-header > span{
+    color: #fff;
+}
+
+.images-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

@@ -3,6 +3,7 @@ import { useUserDataStore } from '../../store';
 import './PPMenu.css'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useUserFetch } from '../../utils/Hooks';
+import LogoutButton from '../LogoutButton/LogoutButton';
 
 function PPMenu() {
     const id = useUserDataStore((store) => store.id)
@@ -18,11 +19,8 @@ function PPMenu() {
                 <li>
                     <NavLink className={({ isActive}) => isActive ? "green" : ""} to={'/illustrations/'+ id}>illustrations</NavLink>
                 </li>
-                <li>
-                    <NavLink className={({ isActive}) => isActive ? "green" : ""} to={'/stat/'+ id}>statistics</NavLink>
-                </li>
             </ul>
-            <button className="pp-back" onClick={()=>navigate('/')}>back</button>
+            <LogoutButton/>
         </nav> 
     );
 }

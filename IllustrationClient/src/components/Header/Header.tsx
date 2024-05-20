@@ -19,15 +19,15 @@ function Header() {
                     <li>
                         <NavLink to='/' className={({ isActive}) => isActive ? "green" : ""}>home</NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to='/about' className={({ isActive}) => isActive ? "green" : ""}>about</NavLink>
-                    </li>
+                    </li> */}
                     <li>
                         <NavLink to='/explore' className={({ isActive}) => isActive ? "green" : ""}>explore</NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                         <NavLink to='/blog' className={({ isActive}) => isActive ? "green" : ""}>blog</NavLink>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
 

@@ -1,0 +1,30 @@
+services:
+  server:
+    container_name: server_container
+    build: ./IllustrationServer
+    depends_on:
+      - postgres
+    volumes:
+      - ./IllustrationServer:/app
+    ports:
+      - '8000:8000'
+    restart: always
+    env_file:
+      - ./IllustrationServer/.env
+  postgres:
+    container_name: postgres_container
+    image: postgres:16
+    environment:
+      - POSTGRES_PASSWORD=Kirillzebzeev13
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=Illustration
+    ports:
+      - '5432:5432'
+  client:
+    container_name: client_container
+    build: ./IllustrationClient
+    ports:
+      - '5173:5173'
+    stdin_open: true
+    tty: true
+

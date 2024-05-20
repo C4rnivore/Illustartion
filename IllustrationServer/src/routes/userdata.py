@@ -8,6 +8,7 @@ router = APIRouter()
 @router.get('/api/user/get')
 def get_user_data( req:Request, db:db_dependency):
     access_token = req.cookies.get('access_token')
+    print(req.cookies)
     if not access_token:
          return JSONResponse(status_code=status.HTTP_200_OK, content={'No':'Cookie'})
     

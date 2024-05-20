@@ -23,7 +23,7 @@ def load_user_image(image_id, uid, db:db_dependency):
         st = (update(models.Users).where(models.Users.id == uid).values(images=img))
         db.execute(st)
         db.commit()
-        return { 'message':'Data have been succesfully updated'}
+        return { 'message':'Data have been succesfully updated', 'imageId':image_id}
     except Exception as err:
          return {'message':'Something went wrong'}
 

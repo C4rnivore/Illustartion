@@ -86,7 +86,7 @@ async def update_user_pfp(req:Request, db:db_dependency,  image:UploadFile = Fil
    
 
 @router.post('/api/user/load/image',)
-async def update_user_pfp(req:Request, db:db_dependency,  image:UploadFile = File(...)):
+async def load_user_image_route(req:Request, db:db_dependency,  image:UploadFile = File(...)):
     try:
         imageb64 = base64.b64encode(image.file.read())
     except Exception:
@@ -99,6 +99,7 @@ async def update_user_pfp(req:Request, db:db_dependency,  image:UploadFile = Fil
         return {"message": "Your token has expired. Please login again"}
     
     imagedata = load_image_to_host(imageb64)
+
     if(imagedata == None):
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content= {'message':'Something went wrong'})
     
@@ -112,12 +113,12 @@ async def update_user_pfp(req:Request, db:db_dependency,  image:UploadFile = Fil
     }
 
     create_new_image(image_data, db)
-    
+
     try:
         response = load_user_image(image_data['id'], uid, db)
         return JSONResponse(status_code=status.HTTP_200_OK, content={
             'message':response['message'],
-            'avatarLink':image_data['link']
+            'imageId':response['imageId']
         })
     except:
         return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={

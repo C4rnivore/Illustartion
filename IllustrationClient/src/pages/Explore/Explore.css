@@ -1,0 +1,8 @@
+.explore{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap:20px;
+    grid-template-rows: masonry;
+    width: calc(100% - 220px);
+    margin: 0 auto;
+}

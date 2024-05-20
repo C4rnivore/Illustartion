@@ -7,22 +7,24 @@ export const useUserDataStore = create<UserData & UserDataActions>((set)=>({
     avatar:null,
     email:null,
     description:null,
-
-    updateUserDescription: (data:UserData['description']) => set(() => ({
-        description: data
-    })),
-       
+    images:null,
     updateUserStore: (data:UserData) => {
         set(() => ({
             id: data.id,
             username: data.username ,
-            avatar: data.avatar,
+            avatar: data.avatar? data.avatar : 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg' ,
             email: data.email,
+            images: data.images
         }))
     },
     updateUserAvatar: (data:UserData['avatar']) => set(() => ({
         avatar: data
     })),
+    updateUserDescription: (data:UserData['description']) => set(() => ({
+        description: data
+    })),
+    updateUserImages: (data:UserData['images']) => set(() => ({
+        images: data
+    }))
 
-   
 }))

@@ -1,0 +1,10 @@
+.logout-btn{
+    padding: 5px 15px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    background-color: white;
+}
+.logout-btn:hover{
+    color: white;
+    background-color: var(--green);
+}

@@ -3,31 +3,22 @@ import d_n_d from '../../assets/drag-and-drop-svgrepo-com.svg'
 import './IllustrationsMain.css'
 import toast from 'react-hot-toast';
 import { LoadUserImage } from '../../utils/Api';
+import { useUserDataStore } from '../../store';
+
 
 function IllustrationsMain() {
     const dNd = useRef<HTMLInputElement>(null)
     const [drag, setDrag] = useState<boolean>(false)
     const formData = new FormData();
+    const {images, updateUserImages} = useUserDataStore((store)=> store)
 
     const handleDragNDrop = () =>{
         if(dNd.current?.files == null) return 
 
         const image = dNd.current.files[0]
-        
         formData.append('image', image);
-
-        toast.promise(
-            LoadUserImage(formData).then(res=>{
-                console.log(res);
-            }),
-            {
-                loading: 'Saving...',
-                success: <span>Your avatar was succesfuly update</span>,
-                error: <span>Something went wrong</span>,
-            }
-        )
+        loadData()
     }
-
     const handleDragStart = (e: DragEvent<HTMLDivElement>) =>{
         e.preventDefault()
         setDrag(true)
@@ -38,17 +29,28 @@ function IllustrationsMain() {
     }
     const handleDrop = (e: DragEvent<HTMLDivElement>) =>{
         e.preventDefault()
-
         var files = [...e.dataTransfer.files]
         formData.append('image', files[0])
+        loadData()
+    }
 
+    const loadData = () =>{
         toast.promise(
             LoadUserImage(formData).then(res=>{
-                console.log(res);
+                if (images){
+                    console.log(images);
+                    
+                    let temp = images
+                    temp.push(res.imageId)
+                    updateUserImages(temp)
+                }
+                else{
+                    updateUserImages([res.imageId])
+                }
             }),
             {
                 loading: 'Saving...',
-                success: <span>Your avatar was succesfuly update</span>,
+                success: <span>Your image was succesfuly loaded</span>,
                 error: <span>Something went wrong</span>,
             }
         )

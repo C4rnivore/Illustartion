@@ -1,15 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import {useRef } from 'react';
 import { useUserDataStore } from '../../store';
 import PPDescription from '../PPDescription/PPDescription';
 import PPEdit from '../PPEdit/PPEdit';
 import './PPMain.css'
-import {v4 as uuidv4} from 'uuid';
+
 import { LoadUserPfp } from '../../utils/Api';
+import editIcon from '../../assets/edit-3-svgrepo-com.svg'
 import toast from 'react-hot-toast';
 
 function PPMain() {
     const input = useRef<HTMLInputElement>(null)
-    const {id, username, email, avatar, description, updateUserAvatar} = useUserDataStore((store)=>store)
+    const { username, avatar, description, updateUserAvatar} = useUserDataStore((store)=>store)
 
     function handleImageInputChange(){
         if(input.current?.files == null) return 
@@ -50,6 +51,10 @@ function PPMain() {
                     onClick={onIamgeClick} 
                     className='pp-top-img' 
                     src={avatar!} 
+                    alt="" />
+                <img 
+                    className='pp-top-img-hover' 
+                    src={editIcon}
                     alt="" />
                 <div className="pp-top-text">
                     <span className='pp-top-name'>{username}</span>

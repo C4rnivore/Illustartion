@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login"
 import PersonalPage from "./pages/PersonalPage/PersonalPage"
 import { Toaster } from "react-hot-toast"
 import IllustrationPage from "./pages/IllustrationsPage/IllustrationsPage"
+import Explore from "./pages/Explore/Explore"
 
 export const api ='http://localhost:8000'
 
@@ -22,6 +23,10 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/lk/:userId' element={<PersonalPage/>}/>
         <Route path='/illustrations/:userId' element={<IllustrationPage/>}/>
+        <Route path='/explore' element={<>
+          <Header/>
+          <Explore/>
+        </>}/>
       </Routes>
     </BrowserRouter>
   )

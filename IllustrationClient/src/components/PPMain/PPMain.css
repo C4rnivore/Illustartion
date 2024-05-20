@@ -19,6 +19,15 @@
     height: 150px;
     border-radius: 15px;
     border: 5px solid #fff;
+    filter: brightness(1);
+
+    transition: filter 250ms ease-in-out;
+}
+.pp-top-img:hover{
+    filter: brightness(.75);
+}
+.pp-top-img:hover + img{
+    opacity: 1;
 }
 .pp-top-img:hover{
     cursor: pointer;
@@ -52,3 +61,16 @@
 .pp-btn{
     margin-top: auto;
 }
+.pp-top-img-hover{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 75px;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 250ms ease-in-out;
+}
+
