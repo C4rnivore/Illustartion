@@ -3,7 +3,7 @@ import { Logout } from '../../utils/Api';
 
 function LogoutButton() {
     const handleLogOut = () =>{
-        Logout().then(res=>{
+        Logout().then(()=>{
             window.location.replace('/')
         }).catch(err=>console.log(err))
     }

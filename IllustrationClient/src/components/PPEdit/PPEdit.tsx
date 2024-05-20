@@ -30,7 +30,7 @@ function PPEdit() {
         }
 
         toast.promise(
-            UpdateUserMainData(params).then(res=>{
+            UpdateUserMainData(params).then(()=>{
                 updateUserStore({
                     id: params.id!,
                     username: params.username,

@@ -22,7 +22,7 @@ function RegForm() {
         }
 
         RegisterUser(params)
-        .then(res=>{
+        .then(()=>{
             navigate('/')
         })
         .catch(err=>{

@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast"
 import IllustrationPage from "./pages/IllustrationsPage/IllustrationsPage"
 import Explore from "./pages/Explore/Explore"
 
-export const api ='http://localhost:8000'
+export const api ='http://127.0.0.1:8000'
 
 function App() {
   return (

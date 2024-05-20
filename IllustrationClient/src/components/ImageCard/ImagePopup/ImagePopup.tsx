@@ -8,7 +8,7 @@ const ImagePopup:FC<{visible:boolean, imgData:any, img:IMG, closer:Function}> = 
     const [commVal, setCommVal] = useState<string>('')
     const {id} = useUserDataStore((store)=>store)
 
-    const handleInputChange = (e)=>{
+    const handleInputChange = (e:any)=>{
         setCommVal(e.target.value)
     }
     

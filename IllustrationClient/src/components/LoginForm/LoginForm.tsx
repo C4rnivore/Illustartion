@@ -1,9 +1,8 @@
 import {SubmitHandler, useForm} from 'react-hook-form'
 import { NavLink } from 'react-router-dom';
 import { LoginFields } from '../../utils/Types';
-import { useGoogleLogin } from '@react-oauth/google';
 import './LoginForm.css'
-import { LoginUser, GoogleLoginUser } from '../../utils/Api';
+import { LoginUser } from '../../utils/Api';
 import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
@@ -31,15 +30,15 @@ function LoginForm() {
             })
     }
 
-    const login = useGoogleLogin({
-        onSuccess: (codeResponse) => GoogleLoginUser(codeResponse.access_token).then(res=> {
-            console.log(res);
-            navigate('/')
-        }
+    // const login = useGoogleLogin({
+    //     onSuccess: (codeResponse) => GoogleLoginUser(codeResponse.access_token).then(res=> {
+    //         console.log(res);
+    //         navigate('/')
+    //     }
 
-        ),
-        onError: (error) => console.log('Login Failed:', error)
-    });
+    //     ),
+    //     onError: (error) => console.log('Login Failed:', error)
+    // });
 
     return ( 
         <form className='reg-form' onSubmit={handleSubmit(onSubmit)}>
@@ -75,7 +74,7 @@ function LoginForm() {
             </div>
             <button disabled={isSubmitting} className='form-submit-btn' type='submit'>{isSubmitting?'Loading...':'Login'}</button>
             <span className='span-sep'>or</span>
-            <button className='google-btn' onClick={login}>Sign in with Google</button>
+            <button className='google-btn'>Sign in with Google</button>
             <span className='bottom-form-span'>Don't have an account? <NavLink className='green' to='/register'>Register.</NavLink></span>
         </form>
     );

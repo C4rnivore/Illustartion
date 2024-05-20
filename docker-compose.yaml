@@ -2,6 +2,7 @@ services:
   server:
     container_name: server_container
     build: ./IllustrationServer
+    command: sh -c "uvicorn src.main:app --port 8000 --host 0.0.0.0"
     depends_on:
       - postgres
     volumes:
@@ -24,7 +25,7 @@ services:
     container_name: client_container
     build: ./IllustrationClient
     ports:
-      - '5173:5173'
+      - '3000:4173'
     stdin_open: true
     tty: true
 

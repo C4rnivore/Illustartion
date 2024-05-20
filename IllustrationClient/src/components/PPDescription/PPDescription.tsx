@@ -11,7 +11,7 @@ function PPDescription() {
 
     const handleSecriptionChange = (e:any) =>{
         hasChanged = true
-        setDescription(cur=> cur = e.target.value)
+        setDescription(e.target.value)
     }
 
     const handleSubmit = () =>{
@@ -19,7 +19,7 @@ function PPDescription() {
 
         toast.promise(
             UpdateUserDescription(id, description? description : '')
-            .then(res => {
+            .then(() => {
                 updateUserDescription(description? description : '')
             }),
             {
