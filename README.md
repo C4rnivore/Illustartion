@@ -1,13 +1,12 @@
-# Пока не настроил докер.
+# Illustrtion 
 
-Для локального запуска:
+## Запуск
+`docker-compose up --build -d`
 
-В папке IllustrationServer
-  - pip install --no-cache-dir --upgrade -r requirements.txt
-  - python -m uvicorn src.main:app
+## URL
+`http://localhost:3000/`
 
-В папке IllustrationClient
-  - npm install
-  - npm run dev
+## Важно
+БД - локальная. Это значит вам нужно будет зарегистрироваться самим и загрузить несколько изображений в соответсвующем разделе в профиле. 
 
-Фронт: http://localhost:5173
+После этого можно будет увидеть их на странице explore
